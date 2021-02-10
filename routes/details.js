@@ -10,7 +10,7 @@ router.get('/:id', function(req, res, next) {
     _id: req.params.id
   })
   .then((response) => {
-    res.render('details', {title: 'Cube Details', cube: response})
+    res.render('updatedDetailsPage', {title: 'Cube Details', cube: response})
   })
   .catch((err) => {
     console.log(err);
@@ -18,17 +18,5 @@ router.get('/:id', function(req, res, next) {
 });
 
 module.exports = router;
-
-
-
-
-// router.get('/:id', function(req, res, next) {
-//   let id = req.params.id;
-//   Cube.findOne({_id: id}).populate('accessories')
-//     .then((results) => {
-//       console.log("The single cube results are ", results)
-//       console.log("the accessories are ", results.accessories)
-//       res.render('updatedDetailsPage', {cube: results, accessories: results.accessories})
-//     } )
 
 

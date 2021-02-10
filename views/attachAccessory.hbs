@@ -5,7 +5,7 @@
         <h2>{{cube.name}}</h2>
         <img class="cube" src="{{cube.imageUrl}}">
         {{#if dropDownAccessory}}
-        <form action='/attach/{{cube._id}}' method="post">
+        <form action='/attach/{{cube._id}}' method="POST">
           <label for="accessory">Accessories</label>
           <select id="accessory" name="accessory">
             {{#each dropDownAccessory}}

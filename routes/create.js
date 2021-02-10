@@ -37,7 +37,7 @@ router.get('/accessory', function(req, res, next) {
 
 router.post('/accessory', function(req, res, next) {
   console.log("the accessory form is ", req.body)
-  const newAcc = new Accessory({
+  let newAcc = new Accessory({
     name: req.body.name,
     imageUrl: req.body.imageUrl,
     description: req.body.description,

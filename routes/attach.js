@@ -26,7 +26,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/:id', function(req, res, next) { 
-  const selectAccessoryId = req.params.accessory
+  const selectAccessoryId = req.body.accessory
   const cubeId = req.params.id
   console.log('The attach form is ', req.body, req.params.id)
   Cube.findOneAndUpdate(
