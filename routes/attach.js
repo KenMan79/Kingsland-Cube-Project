@@ -6,16 +6,23 @@ const Accessory = require('../models/accessory');
 /* GET home page. */
 router.get('/:id', function(req, res, next) {
   Cube.findOne({_id: req.params.id}).populate('accessories')  
-  .then((response) => {
-      console.log('Cube to attach accessory to ', response)
-    const idArr = response.accessories.map(accessory => {return accessory._id})
+  .then((thisCube) => {
+      console.log('Cube to attach accessory to ', thisCube)
+    let idArr = thisCube.accessories.map(accessory => {return accessory._id})
+    console.log('Cube test idArr', idArr)
     Accessory.find()
     .then((foundAccessories) => {
         console.log('Found Accessories to attach accessory to ', foundAccessories)
       const dropDownAccessory = foundAccessories.filter(accessory => !idArr.includes(accessory._id))
-      res.render('attachAccessory', { title: 'Attach Accessory', cube: response, dropDownAccessory: dropDownAccessory });
-    });
-  });
+      res.render('attachAccessory', { title: 'Attach Accessory', cube: thisCube, dropDownAccessory: dropDownAccessory });
+    })
+    .catch((error) => {
+      console.log('LOOK AT THIS', error);
+    })
+  })
+  .catch((error) => {
+    console.log('LOOK AT THIS', error);
+  })
 });
 
 router.post('/:id', function(req, res, next) { 

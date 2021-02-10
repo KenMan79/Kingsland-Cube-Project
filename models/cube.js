@@ -7,7 +7,7 @@ const cubeSchema = new Schema({
   // define schema
   name: String,
   description: String,
-  image_url: String,
+  imageUrl: String,
   difficultyLevel: { type: String, required: true },
   accessories: [{ type: Schema.Types.ObjectId, ref: 'Accessory'}]
 

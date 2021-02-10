@@ -28,7 +28,6 @@ router.post('/', function(req, res, next) {
       .catch((err) => {
         res.send(err)
       })
-
 });
 
 router.get('/accessory', function(req, res, next) {
@@ -40,8 +39,8 @@ router.post('/accessory', function(req, res, next) {
   console.log("the accessory form is ", req.body)
   const newAcc = new Accessory({
     name: req.body.name,
-    description: req.body.description,
     imageUrl: req.body.imageUrl,
+    description: req.body.description,
     cubes: []
   })
   newAcc.save()
