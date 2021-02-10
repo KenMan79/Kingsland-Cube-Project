@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 // Routers that have all the get/post etc routes
 
 var indexRouter = require('./routes/index');
-var createCubeRouter = require('./routes/create');
+var createRouter = require('./routes/create');
 var attachAccessoryRouter = require('./routes/attach');
 var detailsRouter = require('./routes/details');
 var aboutRouter = require('./routes/about')
@@ -32,9 +32,10 @@ require('dotenv').config({ path: '.env' });
     user: process.env.DB_USER,
     pass: process.env.DB_PASS,
     useNewUrlParser: true,
-    useUnifiedTopology: false
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
-    .then( (res) => console.log('Woohoo! db connected! Great job Kev!'))
+    .then( (res) => console.log('Woohoo! db connected! Great job!'))
     .catch((err) => console.log(err));
 
 // View Engine Setup
@@ -42,16 +43,18 @@ require('dotenv').config({ path: '.env' });
 app.set('views', path.join(__dirname, 'views')); // setting folder for public files
 app.set('view engine', 'hbs'); // setting view engine to hbs, engine compiles views and data into HTML
 
+hbs.registerPartials('./views/partials')
+hbs.registerHelper('isEqual', (expectedValue, value) => {
+  return value === expectedValue;
+});
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-hbs.registerPartials('./view/partials');
-hbs.registerHelper('isEqual', (expectedValue, value) => {
-  return value === expectedValue;
-});
+
 
 // Routes
 

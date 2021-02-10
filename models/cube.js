@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const Accessory = require('./accessory');
 
-const Schema = mongoose.Schema;
+
 const cubeSchema = new Schema({
   // define schema
   name: String,

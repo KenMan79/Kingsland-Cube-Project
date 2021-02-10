@@ -7,7 +7,7 @@ const Cube = require('../models/cube');
 /* GET users listing. */
 router.get('/:id', function(req, res, next) {
   Cube.findOne({
-    _id: req.params.i
+    _id: req.params.id
   })
   .then((response) => {
     res.render('details', {title: 'Cube Details', cube: response})
