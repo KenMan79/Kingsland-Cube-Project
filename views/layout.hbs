@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    <link href="/stylesheets/site.css" type="text/css" rel="stylesheet">
-    <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{title}}</title>
+        <link href="/stylesheets/site.css" type="text/css" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
+    </head>
+
 <body>
     <!-- this is where the error goes -->
     <div class="container">
@@ -17,9 +18,9 @@
             {{>headerNoAuth}}
         {{/if}}
 
-        <main>{{{body}}}</main>
+     <main>{{{body}}}</main>
         
     </div>
-    {{>footer}}
-</body>
+     {{>footer}}
+    </body>
 </html>
